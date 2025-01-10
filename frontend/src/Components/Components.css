@@ -28,3 +28,31 @@
     background-position: 0% 50%;
   }
 }
+.response {
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+}
+
+.response::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for webkit browsers (Chrome, Safari) */
+}
+
+.answer{
+  background-color: grey;
+  color: white;
+}
+
+/* Add this to your global CSS or a component-specific CSS file */
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #16C47F;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
