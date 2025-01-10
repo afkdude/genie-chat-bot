@@ -1,0 +1,30 @@
+.query-btn:hover{
+  /* background-color: #F6F1F1; */
+  border-bottom: 2px solid #19A7CE;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+
+.new-chat-btn:active{
+  transform: scale(0.97);
+  
+}
+
+.gradient-background {
+  background: linear-gradient(76deg,#e96f11,#cba379,#24e46f,#ffa0e9);
+  background-size: 240% 240%;
+  animation: gradient-animation 8s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
