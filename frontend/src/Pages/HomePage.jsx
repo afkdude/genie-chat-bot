@@ -1,6 +1,7 @@
 import  { useState } from 'react'
 import Sidebar from '../Components/Sidebar';
 import MainArea from '../Components/MainArea';
+import '../App.css'
 
 const HomePage = () => {
 const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);

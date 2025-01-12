@@ -6,6 +6,7 @@ import { IoSend } from "react-icons/io5";
 
 import './components.css'
 import Header from "./Header";
+import { useAuthStore } from "../Store/useAuthStore.js";
 const fetchResponse = async (input) => {
   const apiUrl = "http://localhost:5000/api/gemini/response";
 
@@ -58,13 +59,14 @@ const MainArea = ({ isSidebarMinimized }) => {
     }
   };
 
+  const { authUser } = useAuthStore(); 
   return (
     <div
       className={`${
         isSidebarMinimized ? "flex-[0.95]" : "flex-[0.8]"
       } transition-all duration-500 flex flex-col justify-between items-center`}
     >
-      <Header/>
+      <Header userName={authUser?.fullName} />
       <div className="chats w-[90%] h-[80%] border p-4 flex flex-col justify-between rounded-[20px]">
         {/* Chat Messages */}
         <div className="response h-full flex flex-col gap-2 mt-4 justify-start items-start">
@@ -95,13 +97,13 @@ const MainArea = ({ isSidebarMinimized }) => {
         </div>
 
         {/* Input Section */}
-        <div className="inputs flex items-center mt-4 bg-white border text-[20px] rounded-md px-4 py-2">
+        <div className="inputs flex items-center mt-4  border-b border-l border-r  text-[20px] rounded-lg px-4 py-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter your question here"
-            className="flex-1 outline-none"
+            className="flex-1 outline-none bg-transparent text-white"
           />
           <button onClick={handleSend}>
             <IoSend className="text-[#16C47F]" />
