@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import avatar from "../assets/avtar.svg";
-import response from "../assets/response.png";
+import response from "../assets/output3.svg";
 import { IoSend } from "react-icons/io5";
 
 import './components.css'
+import Header from "./Header";
 const fetchResponse = async (input) => {
-  const apiUrl = "http://localhost:5000/api/gemini";
+  const apiUrl = "http://localhost:5000/api/gemini/response";
 
   try {
     const response = await fetch(apiUrl, {
@@ -61,8 +62,9 @@ const MainArea = ({ isSidebarMinimized }) => {
     <div
       className={`${
         isSidebarMinimized ? "flex-[0.95]" : "flex-[0.8]"
-      } transition-all duration-500 flex flex-col justify-center items-center`}
+      } transition-all duration-500 flex flex-col justify-between items-center`}
     >
+      <Header/>
       <div className="chats w-[90%] h-[80%] border p-4 flex flex-col justify-between rounded-[20px]">
         {/* Chat Messages */}
         <div className="response h-full flex flex-col gap-2 mt-4 justify-start items-start">
@@ -78,7 +80,7 @@ const MainArea = ({ isSidebarMinimized }) => {
               <img
                 src={msg.type === "bot" ? response : avatar}
                 alt="avatar"
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-lg"
               />
               <span>{msg.text}</span>
             </div>
@@ -86,7 +88,7 @@ const MainArea = ({ isSidebarMinimized }) => {
           {/* Loader message */}
           {isLoading && (
             <div className="flex items-center gap-2 p-4 text-green-500">
-              <div className="loader">...</div>
+              <div className="loader"></div>
               <span>Getting Response...</span>
             </div>
           )}

@@ -1,26 +1,47 @@
-import { useState } from "react";
-import "./App.css";
-import MainArea from "./Components/MainArea";
-import Sidebar from "./Components/Sidebar";
+import HomePage from "./pages/HomePage";
 
-function App() {
-  // State to manage whether the sidebar is minimized
-  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
+import { BrowserRouter, Navigate, Route, Router, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import { useEffect } from "react";
+import { LoaderIcon } from "react-hot-toast";
+import { useAuthStore } from "./store/useAuthStore.js";
 
-  // Function to toggle the sidebar state
-  const toggleSidebar = () => {
-    setIsSidebarMinimized((prev) => !prev);
-  };
 
+const App = () => {
+  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  console.log(authUser);
+
+  //adding loading state
+  if (isCheckingAuth && !authUser)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <LoaderIcon className="size-10 animate-spin" />
+      </div>
+    );
   return (
-    <div className="gradient-background-app flex w-[100vw] h-[100vh] bg-[#F2F9FF]">
-      <Sidebar
-        isSidebarMinimized={isSidebarMinimized}
-        toggleSidebar={toggleSidebar}
-      />
-      <MainArea isSidebarMinimized={isSidebarMinimized} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={authUser ? <HomePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignupPage /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
