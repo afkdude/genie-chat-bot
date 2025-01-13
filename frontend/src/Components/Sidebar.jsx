@@ -1,16 +1,12 @@
-
-  /* eslint-disable react/prop-types */
-  import logo from "../assets/genie.svg";
-  import { FiLogOut, FiPlus } from "react-icons/fi";
-  import { FaBookmark } from "react-icons/fa";
-  import { GrUpgrade } from "react-icons/gr";
-  import { IoMdHome } from "react-icons/io";
-  import { CiChat1 } from "react-icons/ci";
-  import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+/* eslint-disable react/prop-types */
+import logo from "../assets/genie.svg";
+import { FiLogOut, FiPlus } from "react-icons/fi";
+import { CiChat1 } from "react-icons/ci";
+import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 import "./Components.css";
 import { useAuthStore } from "../Store/useAuthStore.js";
 
- const Sidebar = ({ isSidebarMinimized, toggleSidebar }) => {
+const Sidebar = ({ isSidebarMinimized, toggleSidebar }) => {
   const { logout } = useAuthStore(); // Access the logout function from the store
 
   const handleLogout = () => {
@@ -44,11 +40,11 @@ import { useAuthStore } from "../Store/useAuthStore.js";
       {!isSidebarMinimized ? (
         <div className="flex flex-col h-full border-b-[2px] text-gray-800">
           <div className="upperSide flex flex-col p-4 gap-4 flex-[0.8]">
-            <div className="new-chat-btn flex items-center justify-center bg-[#19A7CE] text-white font-semibold text-xl rounded-md py-2 gap-1 cursor-pointer gradient-background">
+            <div className="new-chat-btn flex items-center justify-center bg-[#19A7CE] text-white font-semibold text-xl rounded-md py-2 gap-1 cursor-pointer ">
               <FiPlus className="text-[25px]" />
-              <button>New Chat</button>
+              <button className="btn-hover color-1">New Chat</button>
             </div>
-            <div className="chat-queries flex flex-col gap-2">
+            <div className="chat-lists flex flex-col gap-2">
               <div className="query-btn flex items-center justify-start ps-2 bg-[#dbedf6] rounded-md py-2 gap-2">
                 <CiChat1 className="text-[20px] text-[#146C94]" />
                 <button>Write an article on democracy</button>
@@ -77,7 +73,6 @@ import { useAuthStore } from "../Store/useAuthStore.js";
         }`}
       >
         <ul className="flex flex-col gap-4">
-          
           <li
             className="flex items-center gap-2 cursor-pointer"
             onClick={handleLogout}

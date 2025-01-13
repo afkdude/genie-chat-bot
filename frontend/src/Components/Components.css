@@ -11,23 +11,6 @@
   
 }
 
-.gradient-background {
-  background: linear-gradient(76deg,#e96f11,#cba379,#24e46f,#ffa0e9);
-  background-size: 240% 240%;
-  animation: gradient-animation 8s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 .response {
   overflow-y: auto; /* Enable vertical scrolling */
   scrollbar-width: none; /* Firefox */
@@ -57,6 +40,7 @@
   100% { transform: rotate(360deg); }
 }
 
+/* gradient text welcome msg  */
 @keyframes gradient-text {
   0% {
     background-position: 0%;
@@ -72,4 +56,28 @@
 .animate-gradient-text {
   background-size: 200% 200%;
   animation: gradient-text 3s linear infinite;
+}
+
+
+/* new chat button animation  */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.new-chat-btn {
+  background: linear-gradient(50deg, #FF6347, #FFD700);
+  background-size: 400% 400%;
+  animation: gradientBackground 6s ease-in-out infinite;
+}
+
+.new-chat-btn:hover {
+  animation-duration: 3s;
 }
